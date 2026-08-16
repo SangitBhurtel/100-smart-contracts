@@ -22,7 +22,6 @@ contract Voting {
     // State variables
     address[] owners;
     struct Transactions {
-        uint256 Id;
         bool txSuccess;
         address[] voted;
         uint256 timeStarted;
@@ -83,7 +82,7 @@ contract Voting {
     }
 
     function vote(uint256 _txID) public onlyOwner{
-        if (transactions.length != 0 && transactions[_txID].expiry > block.timestamp) revert SubmissionExpired();
+        if (transactions.length != 0 && transactions[_txID].expiry < block.timestamp) revert SubmissionExpired();
         if (transactions.length != 0 && transactions[_txID].txSuccess) revert SubmissionExecuted();
 
         for (uint256 i = 0; i < transactions[_txID].voted.length; i++) {
