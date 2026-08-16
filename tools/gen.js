@@ -110,6 +110,7 @@ console.log(`\nSelf-check: all ${NUM_ADDRESSES} proofs verify against the root? 
 
 // ---- Dump full list + proofs to JSON for later use ----
 const fs = require("fs");
+const path = require("path");
 const output = {
   root,
   claims: airdropList.map((entry, i) => ({
@@ -118,5 +119,6 @@ const output = {
     proof: getProof(levels, i),
   })),
 };
-fs.writeFileSync("airdrop-data.json", JSON.stringify(output, null, 2));
-console.log("\nFull data (root + every address/amount/proof) written to airdrop-data.json");
+const outPath = path.join(__dirname, "..", "data", "airdrop-data.json");
+fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
+console.log(`\nFull data (root + every address/amount/proof) written to ${path.relative(process.cwd(), outPath)}`);

@@ -31,11 +31,11 @@ A hands-on learning repo for Solidity and Web3. The goal is to implement **100 s
 ## Tooling
 
 - **Solidity** `0.8.26`
-- **ethers.js** `v6` — used by `gen.js` to build Merkle trees for the airdrop contract
+- **ethers.js** `v6` — used by `tools/gen.js` to build Merkle trees for the airdrop contract
 
 ```bash
 npm install
-node gen.js   # generates airdrop-data.json (root + proofs)
+node tools/gen.js   # generates data/airdrop-data.json (root + proofs)
 ```
 
 ## Structure
@@ -43,8 +43,10 @@ node gen.js   # generates airdrop-data.json (root + proofs)
 ```
 smart-contracts/
 ├── *.sol                 # practice contracts
-├── gen.js                # Merkle tree generator for airdrop
-├── airdrop-data.json     # sample root / claims / proofs
+├── tools/
+│   └── gen.js            # Merkle tree generator for airdrop
+├── data/
+│   └── airdrop-data.json # sample root / claims / proofs
 ├── package.json
 └── README.md
 ```

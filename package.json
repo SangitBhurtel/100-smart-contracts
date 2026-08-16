@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "generate-airdrop": "node tools/gen.js"
+  },
   "dependencies": {
     "ethers": "^6.17.0"
   }
